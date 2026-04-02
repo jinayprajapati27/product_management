@@ -1,0 +1,151 @@
+<!-- Use SweetAlert2 for modern, interactive toast notifications -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    /* Premium Glassmorphic Toast Styles */
+    .premium-toast {
+        border-radius: 16px !important;
+        padding: 12px 24px 12px 14px !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: grab;
+    }
+
+    .premium-toast:active {
+        cursor: grabbing;
+    }
+
+    [data-theme="dark"] .premium-toast {
+        background: rgba(30, 41, 59, 0.85) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #f8fafc !important;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    [data-theme="light"] .premium-toast {
+        background: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        color: #0f172a !important;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .premium-toast .swal2-title {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        margin-left: 12px !important;
+    }
+    
+    .premium-toast .swal2-icon {
+        margin: 0 !important;
+        transform: scale(0.8);
+    }
+
+    .premium-toast .swal2-timer-progress-bar-container {
+        height: 4px !important;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        overflow: hidden;
+    }
+
+    .premium-toast.swal2-icon-success .swal2-timer-progress-bar {
+        background: linear-gradient(90deg, #10b981, #34d399) !important;
+    }
+
+    .premium-toast.swal2-icon-error .swal2-timer-progress-bar {
+        background: linear-gradient(90deg, #ef4444, #f87171) !important;
+    }
+    
+    .premium-toast.swal2-icon-warning .swal2-timer-progress-bar {
+        background: linear-gradient(90deg, #f59e0b, #fbbf24) !important;
+    }
+    
+    .premium-toast.swal2-icon-info .swal2-timer-progress-bar {
+        background: linear-gradient(90deg, #3b82f6, #60a5fa) !important;
+    }
+</style>
+
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        showCloseButton: true,
+        customClass: {
+            popup: 'premium-toast'
+        },
+        didOpen: (toast) => {
+            // Interactive: pause timer on hover
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+            
+            // Interactive: Swipe left/right to dismiss functionality
+            let touchstartX = 0;
+            let touchendX = 0;
+            
+            toast.addEventListener('touchstart', e => {
+                touchstartX = e.changedTouches[0].screenX;
+            });
+            
+            toast.addEventListener('touchend', e => {
+                touchendX = e.changedTouches[0].screenX;
+                if (touchendX > touchstartX + 50 || touchstartX > touchendX + 50) { 
+                    Swal.close();
+                }
+            });
+        }
+    });
+
+    // Backwards compatibility layer so we don't need to change existing JS code
+    window.toastr = {
+        success: function(message) {
+            Toast.fire({
+                icon: 'success',
+                title: message
+            });
+        },
+        error: function(message) {
+            Toast.fire({
+                icon: 'error',
+                title: message
+            });
+        },
+        info: function(message) {
+            Toast.fire({
+                icon: 'info',
+                title: message
+            });
+        },
+        warning: function(message) {
+            Toast.fire({
+                icon: 'warning',
+                title: message
+            });
+        }
+    };
+
+<% if (typeof locals !== 'undefined' && locals.success && locals.success.length > 0) { %>
+    toastr.success("<%= locals.success %>");
+<% } else if (typeof success !== 'undefined' && success && success.length > 0) { %>
+    toastr.success("<%= success %>");
+<% } else { %>
+    <% try { if (success && success.length > 0) { %>
+        toastr.success("<%= success %>");
+    <% } } catch(e) {} %>
+<% } %>
+
+<% if (typeof locals !== 'undefined' && locals.error && locals.error.length > 0) { %>
+    toastr.error("<%= locals.error %>");
+<% } else if (typeof error !== 'undefined' && error && error.length > 0) { %>
+    toastr.error("<%= error %>");
+<% } else { %>
+    <% try { if (error && error.length > 0) { %>
+        toastr.error("<%= error %>");
+    <% } } catch(e) {} %>
+<% } %>
+</script>
