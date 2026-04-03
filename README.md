@@ -104,14 +104,15 @@ npm run dev
 
 ## 🔍 Search Functionality
 The application includes a simple search feature to filter products by name.
-Usage
--/products?search=keyword
-Example
--/products?search=phone
+
+### Usage
+- /products?search=keyword
+### Example
+- /products?search=phone
 
 ## 🧠 Learning Outcomes
--MVC architecture in real-world projects
--CRUD operations using Express & MongoDB
--Server-side rendering with EJS
--Implementing search using MongoDB queries
--Structuring scalable Node.js applications
+- MVC architecture in real-world projects
+- CRUD operations using Express & MongoDB
+- Server-side rendering with EJS
+- Implementing search using MongoDB queries
+- Structuring scalable Node.js applications
