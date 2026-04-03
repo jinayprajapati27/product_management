@@ -30,28 +30,24 @@ This project demonstrates a complete CRUD system with server-side rendering and 
 ## 📂 Project Structure
 
 
- product-app/
-│
+```text
+product-app/
 ├── models/
-│ └── Product.js
-│
+│   └── Product.js
 ├── views/
-│ └── products/
-│ ├── index.ejs
-│ ├── add.ejs
-│ └── edit.ejs
-│
+│   └── products/
+│       ├── index.ejs
+│       ├── add.ejs
+│       └── edit.ejs
 ├── controllers/
-│ └── productController.js
-│
+│   └── productController.js
 ├── routes/
-│ └── productRoutes.js
-│
+│   └── productRoutes.js
 ├── public/
-│
 ├── server.js
 ├── package.json
 └── README.md
+```
 
 
 ---
