@@ -59,34 +59,59 @@ product-app/
 ## ⚙️ Installation & Setup
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/your-username/product-app.git
 cd product-app
-2. Install Dependencies
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
-3. Configure Environment Variables
+```
 
-Create a .env file in the root directory:
+### 3. Configure Environment Variables
+Create a `.env` file in the root directory:
 
+```env
 PORT=3000
 MONGO_URI=mongodb://127.0.0.1:27017/productDB
-4. Run the Application
+```
+
+### 4. Run the Application
+
+```bash
 npm start
-5. Development Mode (Optional)
+```
+
+### 5. Development Mode (Optional)
+
+```bash
 npm run dev
-🌐 Application Routes
-Method	Endpoint	Description
-GET	/products	List all products
-GET	/products/add	Show add product form
-POST	/products/add	Create new product
-GET	/products/edit/:id	Show edit form
-POST	/products/edit/:id	Update product
-POST	/products/delete/:id	Delete product
-🔍 Search Functionality
+```
 
+## 🌐 Application Routes
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/products` | List all products |
+| GET | `/products/add` | Show add product form |
+| POST | `/products/add` | Create new product |
+| GET | `/products/edit/:id` | Show edit form |
+| POST | `/products/edit/:id` | Update product |
+| POST | `/products/delete/:id` | Delete product |
+
+## 🔍 Search Functionality
 The application includes a simple search feature to filter products by name.
-
 Usage
 /products?search=keyword
 Example
 /products?search=phone
+
+## 🧠 Learning Outcomes
+MVC architecture in real-world projects
+CRUD operations using Express & MongoDB
+Server-side rendering with EJS
+Implementing search using MongoDB queries
+Structuring scalable Node.js applications
