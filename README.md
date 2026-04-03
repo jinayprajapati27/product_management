@@ -30,7 +30,7 @@ This project demonstrates a complete CRUD system with server-side rendering and 
 ## 📂 Project Structure
 
 
-product-app/
+ product-app/
 │
 ├── models/
 │ └── Product.js
@@ -105,13 +105,13 @@ npm run dev
 ## 🔍 Search Functionality
 The application includes a simple search feature to filter products by name.
 Usage
-/products?search=keyword
+-/products?search=keyword
 Example
-/products?search=phone
+-/products?search=phone
 
 ## 🧠 Learning Outcomes
-MVC architecture in real-world projects
-CRUD operations using Express & MongoDB
-Server-side rendering with EJS
-Implementing search using MongoDB queries
-Structuring scalable Node.js applications
+-MVC architecture in real-world projects
+-CRUD operations using Express & MongoDB
+-Server-side rendering with EJS
+-Implementing search using MongoDB queries
+-Structuring scalable Node.js applications
